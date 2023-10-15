@@ -1,0 +1,78 @@
+.middle_banner {
+    width: 800px;
+    background-image: url(../../../assets/pictures/banner.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    border-radius: 6px;
+    transition: all 0.3s ease-in-out; 
+}
+
+
+.middle_banner:hover {
+    transform: scale(1.01); 
+}
+
+.middle_banner .banner_text {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 10%;
+    left: 5%;
+    margin: 0;
+}
+
+.middle_banner .banner_text .lastest_trendig_span {
+    font-size: 1.75em;
+    cursor: pointer;
+    font-weight:400;
+}
+
+.middle_banner .banner_text .electronic_span {
+    font-size: 2em;
+    cursor: pointer;
+    font-weight:700; 
+}
+
+.middle_banner .banner_text button{
+    border: none;
+    border-radius: 6px;
+    background-color: white;
+    color: black;
+    margin-top: 10px;
+    width: 120px;
+    height: 40px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out; 
+}
+
+.middle_banner .banner_text button:hover {
+    background-color: #007BFF; 
+    color: white;
+}
+
+@media screen and (max-width: 1350px) {
+    .middle_banner {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 770px) {
+    .middle_banner {
+        width: 100%;
+        height: 100%;
+    }
+    .middle_banner .banner_text .lastest_trendig_span {
+        font-size: 1.1em;
+    }
+    .middle_banner .banner_text .electronic_span {
+        font-size: 1.1em;
+    }
+    .middle_banner .banner_text button {
+        width: 80px;
+        font-size: 0.75em;
+        height: 30px;
+    }
+}

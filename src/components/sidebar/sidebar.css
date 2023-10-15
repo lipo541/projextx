@@ -1,0 +1,55 @@
+.sidebar-container {
+    position: relative;
+  }
+  
+  .burger_menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    border: 1px solid #EFF2F4;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .burger_menu .open {
+    transform: translateX(200px);
+    z-index: 1;
+  }
+  
+  .line {
+    width: 100%;
+    min-width: 25px;
+    height: 3px;
+    background-color: #1C1C1C;
+    border-radius: 25px;
+  }
+  
+  .sidebar {
+    width: 300px;
+    height: 100vh;
+    background-color: #1C1C1C;
+    position: absolute;
+    top: 0;
+    left: -10000px; 
+    transition: left 0.5s ease; 
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    color: white;
+    z-index: 1;
+  }
+  
+  .lipo {
+    margin: 10px 0;
+  }
+  
+  .sidebar.open {
+    left: -20%; 
+    top: -35%;
+  }
+  

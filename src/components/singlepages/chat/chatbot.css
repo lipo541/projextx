@@ -1,0 +1,123 @@
+.livechat_container img {
+  cursor: pointer;
+  width: 60px;
+}
+
+.livechat_container {
+  cursor: pointer;
+}
+
+.slider {
+  position: absolute;
+  display: none;
+  bottom: 70px;
+  width: 300px;
+  height: 300px;
+  border: 1px solid #DEE2E7;
+  background-color: #EFF2F4;
+  border-radius: 15px;
+  padding: 10px;
+  overflow: hidden;
+  z-index: 1;
+  
+}
+
+.slider.show {
+  right: 0; /* Move the slider to the left to reveal it */
+  display: flex;
+  animation: slideIn 0.3s ease-in-out; /* Apply the animation */
+}
+
+@keyframes slideIn {
+  from {
+    right: -300px; /* Start with the slider off the screen to the right */
+  }
+  to {
+    right: 0; /* Move the slider to the left to reveal it */
+  }
+}
+
+
+.livechat_box {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  font-size: 0.7em;
+}
+.operator_span_box {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.operator {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 30px;
+  height: 50px;
+  width: 100%;
+  background-color: white;
+  border-radius: 10px;
+  border: 3px solid #DEE2E7;
+}
+.operatoor_box img {
+  width: 30px;
+  
+}
+
+.operatoor_box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 40px;
+  height: 40px;
+  background-color: #8B96A5;
+  
+  border-radius: 50%;
+  margin-left: 10px;
+}
+
+.operator_span {
+  color: #1C1C1C;
+  font-weight: 700;
+  font-size: 1em;
+}
+
+.waiting_span {
+color: #8B96A5;
+font-weight: 500;
+}
+.input-container {
+  display: flex;
+}
+.input-container input {
+  width: 100%;
+  height: 30px;
+  outline: none;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  border: 1px solid var(--primary-gradient);
+  font-size: 1em;
+  padding-left: 5px;
+}
+
+.input-container button {
+  width: 70px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+  border: none;
+  background-color: var(--primary-gradient);
+  color: white;
+}
+.chat-content {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+  overflow: hidden;
+}

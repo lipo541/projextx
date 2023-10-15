@@ -1,0 +1,22 @@
+.layout_container {
+    /* Your layout container styles here */
+    position: relative; /* Ensure the container is relatively positioned */
+    width: 100%;
+    height: 100vh;
+    
+  }
+  
+  .chatbot_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    /* Your chatbot container styles here */
+    position: sticky;
+    bottom: 4%; 
+    left: 92%;/* Adjust the top value as needed */
+    /* Other styles like width, background, etc. */
+  }
+  

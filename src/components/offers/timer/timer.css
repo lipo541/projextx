@@ -1,0 +1,95 @@
+.timer_container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: 200px;
+    height: 100%;
+    border-radius: 6px;
+    padding: 20px;
+    row-gap: 20px;
+
+}
+.timer_container .deal {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+.timer_container .deal .dealspan {
+    color: #1C1C1C;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+.timer_container .deal .hygienespan {
+    font-size: 1em;
+    font-weight: 400;
+    color: #8B96A5;
+}
+.timer {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    column-gap: 5px;
+}
+
+.timer1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 45px;
+    height: 50px;
+    background-color: #606060;
+    border-radius: 4px;
+    
+}
+.daystimer {
+    font-size: 1em;
+    font-weight: 700;
+    color: #fff;
+}
+.timingspan {
+    font-size: 0.75em;
+    color: #fff;
+    font-weight: 400;
+}
+@media screen and (max-width: 770px) {
+    .timer_container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+        height: auto;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 0;
+    }
+    .timer {
+        display: flex;
+        justify-content: flex-end;
+    }
+    .deal {
+        width: 100%;
+    }
+    .dealspan {
+        font-size: 1em;
+    }
+    .hygienespan {
+        font-size: 0.8em;
+    }
+    .timer1 {
+        background-color: #EFF2F4;
+    }
+    .daystimer {
+        color: #8B96A5;
+        font-weight: 600;
+        font-size: 1em;
+    }
+    .timingspan {
+        font-size: 0.65em;
+        color: #8B96A5;
+        font-weight: 400;
+    }
+    
+
+
+}

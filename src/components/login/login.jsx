@@ -1,0 +1,89 @@
+import React, { useState } from 'react';
+import './login.css';
+import google from '../../assets/logo/google.png';
+import facebook1 from '../../assets/logo/facebook.png';
+import apple from '../../assets/logo/apple.png';
+import brandlogo from '../../assets/logo/atom.png'
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+
+const Login = () => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+
+  const handleInputChange = (event) => {
+    if (event.target.id === 'username') {
+      setUsername(event.target.value);
+    } else if (event.target.id === 'password') {
+      setPassword(event.target.value);
+    }
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    axios.post('https://amazon-digital-prod.azurewebsites.net/api/user/LogIn',
+    {
+      email:username ,
+      password,
+    },
+    {headers: {'Content-Type': 'application/json'}}
+    )
+
+    .then((response) => {
+      localStorage.setItem('myData', JSON.stringify(response.data.jwt));
+      navigate('/');
+    })
+    .catch((error) => {
+      console.error('API request error:', error);
+      alert('Email and password are incorrect');
+    });
+  };
+
+  return (
+    <div className='login_ecomerce'>
+      <div className="background">
+        <div className="shape"></div>
+        <div className="shape"></div>
+      </div>
+
+      <form onSubmit={handleSubmit}>
+        <h1>Log in <img src={brandlogo} alt="" /></h1>
+        <label htmlFor="username">Username</label>
+        <input type="text" placeholder="Email or Phone" id="username" value={username} onChange={handleInputChange} />
+
+        <label htmlFor="password">Password</label>
+        <input type="password" placeholder="Password" id="password" value={password} onChange={handleInputChange} />
+        <div>
+          <button type="submit">Log In</button>
+          <div className='singn_logo_box'>
+            <div className='contactwith_span'>
+              <span>or continue with</span>
+            </div>
+
+            <div className='g_f_a_span'>
+              <div className='google_box'>
+                <img className='logo_image' src={google} alt='' />
+              </div>
+
+              <div className='google_box'>
+                <img className='logo_image' src={facebook1} alt='' />
+              </div>
+
+              <div className='google_box'>
+                <img className='logo_image' src={apple} alt='' />
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+      </form>
+    </div>
+  );
+};
+
+export default Login;

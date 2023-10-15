@@ -1,0 +1,238 @@
+.login_ecomerce {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.background {
+  max-width: 430px;
+  width: 85%;
+  max-height: 520px;
+  height: 68%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+}
+
+.background .shape {
+  height: 180px;
+  width: 180px;
+  position: absolute;
+  border-radius: 50%;
+  transition: transform 0.3s ease, filter 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.shape:first-child {
+  background: linear-gradient(#1845ad, #23a2f6);
+  left: -80px;
+  top: -70px;
+}
+
+.shape:last-child {
+  background: linear-gradient(to right, #ff512f, #f09819);
+  right: -30px;
+  bottom: -90px;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+form h1 img {
+  width: 35px;
+  animation: rotate 5s linear infinite;
+}
+
+form h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+form {
+  height: 600px;
+  width: 360px;
+  background-color: rgba(255, 255, 255, 0.13);
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  border-radius: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+  padding: 50px 35px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+form * {
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  outline: none;
+  border: none;
+}
+form h1 {
+  font-size: 2em;
+  font-weight: 500;
+  text-align: center;
+}
+.login_ecomerce form input {
+  display: block;
+  height: 50px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.07);
+  border-radius: 3px;
+  padding: 0 10px;
+  font-size: 0.8em;
+  font-weight: 300;
+}
+.login_ecomerce form input::placeholder {
+  color: #e5e5e5;
+}
+
+.login_ecomerce form button {
+  margin-top: 50px;
+  width: 100%;
+  background-color: #ffffff;
+  color: #080710;
+  padding: 15px 0;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.singn_logo_box {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  row-gap: 15px;
+  width: 100%;
+  height: 95px;
+}
+
+.g_f_a_span img {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.g_f_a_span {
+  display: flex;
+  column-gap: 15px;
+}
+
+.contactwith_span span {
+  font-size: 0.85em;
+  color: white;
+  font-weight: 500;
+}
+
+.g_f_a_span .google_box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.shape:hover {
+  transform: scale(1.1); 
+  filter: brightness(1.2); 
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.8), 0 0 60px rgba(255, 255, 255, 0.6); 
+}
+
+.google_box:hover .hover-text {
+  width: 135px;
+}
+
+.hover-text {
+  display: inline-block;
+  width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: width 0.8s ease;
+  color: white;
+  font-size: 0.75em;
+  cursor: pointer;
+  padding-left: 5px;
+}
+.g_f_a_span img{
+  transition: box-shadow 0.3s ease, transform 0.3s ease; 
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+  transform: scale(1); 
+  border-radius: 30%
+}
+.g_f_a_span img:hover {
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 255, 255, 0.6);
+  transform: scale(1.2);
+  border-radius: 30%; 
+}
+.g_f_a_span img:active{
+  transform: scale(0.8);
+  border-radius: 30%;
+}
+.login_ecomerce {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.background {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.background .shape {
+  height: 180px;
+  width: 180px;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.shape:first-child {
+  background: linear-gradient(#1845ad, #23a2f6);
+}
+
+.shape:last-child {
+  background: linear-gradient(to right, #ff512f, #f09819);
+}
+
+@keyframes moveInRandom {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(100px, -50px); }
+  50% { transform: translate(-60px, -30px); }
+  75% { transform: translate(30px, -50px); }
+  100% { transform: translate(0, -30px); }
+}
+.shape {
+  animation: moveInRandom 15s infinite;
+}
+
+.login_ecomerce form button {
+  background-color: #ff512f;
+  color: #ffffff;
+}
+
+.login_ecomerce form button:hover {
+  background-color: #f09819;
+}
+.login_ecomerce {
+  background: linear-gradient(to right, #add8e6, #00008b); 
+}
+
+.login_ecomerce form input {
+  background-color: #00bfff; 
+}
+
+

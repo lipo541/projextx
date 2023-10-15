@@ -1,0 +1,41 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 5.375em; 
+    background-color: #fff;
+    padding-left: 4%;
+    padding-right: 4%;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+@media screen and (max-width: 550px) {
+    header {
+     flex-wrap: wrap;
+    }
+    header .middle {
+        width: 100%;
+    }
+    header .left {
+        order: 1;
+    }
+    header .middle {
+        order: 3;
+    }
+    header .right {
+        order: 2;
+
+    }
+}
+
+@media screen and (max-width: 1350px) {
+    header {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+
+}

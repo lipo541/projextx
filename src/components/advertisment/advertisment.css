@@ -1,0 +1,58 @@
+
+.advertisment_container {
+    width: 100%;
+    padding-left: 4%;
+    padding-right: 4%;
+    margin-top: 20px;
+    height: 210px;
+}
+.advertisment_container .advertisment {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    padding: 20px;
+    padding-top: 40px;
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+    background-image: url(../../assets/pictures/advertisment.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+.advertisment_container .advertisment span {
+    max-width: 450px;
+    font-size: 2em;
+    font-weight: 600;
+    color: white;
+}
+.advertisment_container .advertisment p {
+    font-size: 1em;
+    font-weight: 400;
+    color: white;
+    max-width: 400px;
+}
+
+@media screen and (max-width: 1350px) {
+    
+    .advertisment_container {
+        padding-left: 0;
+        padding-right: 0;
+        height: 150px;
+        
+    }
+    .advertisment_container .advertisment {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .advertisment_container .advertisment span {
+        font-size: 1.3em;
+    }
+    .advertisment_container .advertisment p {
+        font-size: 0.75em;
+    }
+
+
+}
