@@ -1,4 +1,4 @@
-import React, { useEffect, useState,useContext } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import { CartContext } from '../../context/cartcontext';
 import './cart.css';
@@ -24,13 +24,18 @@ const Cart = () => {
 
   const decreaseCount = (id, price) => {
     setCardProducts((prevProducts) =>
-      prevProducts.map((product) =>
-        product.id === id && product.count > 1
-          ? { ...product, count: product.count - 1 }
-          : product
-      )
+      prevProducts.map((product) => {
+        if (product.id === id) {
+          const newCount = Math.max(1, product.count - 1); // Ensure count doesn't go below 1
+          return { ...product, count: newCount };
+        } else {
+          return product;
+        }
+      })
     );
-    setTotalPrice((prevPrice) => prevPrice - price);
+    // Recalculate the total price based on the updated counts
+    const newTotalPrice = cardProducts.reduce((total, product) => total + product.price * product.count, 0);
+    setTotalPrice(newTotalPrice);
   };
 
   useEffect(() => {
@@ -58,7 +63,10 @@ const Cart = () => {
       });
   }, [setTotalPrice]);
 
-  const removeItem = (id, price) => {
+  const removeItem = (id, price, count) => {
+    // Calculate the amount to subtract from the total price
+    const amountToSubtract = price * count;
+
     axios
       .delete(`https://amazon-digital-prod.azurewebsites.net/api/cart/removefromcart`, {
         data: {
@@ -73,7 +81,8 @@ const Cart = () => {
         setCardProducts((prevProducts) =>
           prevProducts.filter((product) => product.id !== id)
         );
-        setTotalPrice((prevPrice) => prevPrice - price);
+        // Subtract the amount from the total price
+        setTotalPrice((prevPrice) => prevPrice - amountToSubtract);
       })
       .catch((error) => {
         console.error('API request error:', error);
@@ -99,7 +108,7 @@ const Cart = () => {
                 </span>
               </div>
               <div className="cart_button_container">
-                <button onClick={() => removeItem(cardProduct.id, cardProduct.price)}>
+                <button onClick={() => removeItem(cardProduct.id, cardProduct.price, cardProduct.count)}>
                   Remove
                 </button>
                 <button>Save for Later</button>
@@ -112,15 +121,15 @@ const Cart = () => {
                 <span>{cardProduct.count}</span>
                 <button onClick={() => increaseCount(cardProduct.id, cardProduct.price)}>+</button>
               </div>
-            </div>  
+            </div>
           </div>
         ))}
         <div className='cart_prise'>
           <button> <img src={leftarrow} alt="" /> Back to shop</button>
-          <button>Remove all</button>    
+          <button>Remove all</button>
         </div>
 
-        <div>Total Price: ${totalPrice}</div>
+        <div className='totalprise_span'>{totalPrice}</div>
 
 
         <div className="delivery_container">

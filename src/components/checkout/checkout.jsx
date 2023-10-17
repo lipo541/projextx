@@ -5,7 +5,7 @@ import visa1 from '../../assets/cards/visa1.png';
 import visa from '../../assets/cards/visa.png';
 import applepay from '../../assets/cards/applepay.png';
 import paypall from '../../assets/cards/paypall.png';
-import { CartContext } from '../../context/cartcontext'; // replace with the actual path to CartContext.js in your project
+import { CartContext } from '../../context/cartcontext'; 
 
 const Checkout = () => {
   const { totalPrice } = useContext(CartContext);
@@ -27,16 +27,18 @@ const Checkout = () => {
             </div>
             <div className='total'>
                 <span className='subtotal_span'>discount:</span>
-                <span className='total_span2'>$- 60</span>
+                <span className='total_span2'>(10% off) ${((totalPrice * 0.1).toFixed(2))}</span>
             </div>
             <div className='total'>
                 <span className='subtotal_span'>tax:</span>
-                <span className='total_span3'>+ $14.00</span>
+                <span className='total_span3'> (4% tax) ${(totalPrice * 0.04).toFixed(2)}</span>
+
             </div>
             <div className='total_2'>
                 <span className='subtotal_span2'>Total:</span>
-                <span className='total_span4'>$1357.97</span>
+                <span className='total_span4'>  $ {((totalPrice - (totalPrice * 0.1) + (totalPrice * 0.04)).toFixed(2))}</span>
             </div>
+            
             <button>checkout </button>
             <div className='card_container'>
                 <img src={express} alt="" />
