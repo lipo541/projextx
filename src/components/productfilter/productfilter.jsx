@@ -1,4 +1,5 @@
-import React, { useState,  } from 'react';
+import React, { useState, useEffect  } from 'react';
+import axios from 'axios';
 import './productfilter.css';
 import arrowdown from '../../assets/logo/arrowdown.png';
 import PriceRangeSlider from '../prise_range/prise';
@@ -9,12 +10,29 @@ import star2 from '../../assets/rating/2star.png';
 
 
 const Productfilter = () => {
+    // make filter 
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+      axios
+        .get('https://amazon-digital-prod.azurewebsites.net/api/product/categories')
+        .then((response) => {
+          setProducts(response.data);
+        })
+        .catch((error) => {
+          console.error('API request error:', error);
+        });
+        
+    }, []);
+
+    // arrow rotate, hide filter
   const [isCategoryOpen, setCategoryOpen] = useState(true);
   const [isBrandsOpen, setBrandsOpen] = useState(true);
   const [isFeaturesOpen, setFeaturesOpen] = useState(true);
   const [isPriceRangeOpen, setPriceRangeOpen] = useState(true);
   const [isConditionOpen, setConditionOpen] = useState(true);
   const [isRatingOpen, setRatingOpen] = useState(true);
+
 
   const toggleCategory = () => {
     setCategoryOpen(!isCategoryOpen);
@@ -50,10 +68,9 @@ const Productfilter = () => {
                     <img src={arrowdown} alt="" className={isCategoryOpen ? 'rotate' : ''} />
                 </div>
                 <ul style={{ display: isCategoryOpen ? 'block' : 'none' }}>
-                    <li>Mobile accessory</li>
-                    <li>Electronics</li>
-                    <li>Smartphones</li>
-                    <li>Modern tech</li>
+                {products.map((product) => (
+                    <li key={product.id}>{product.name}</li>
+                ))}
                 </ul>
                 {isCategoryOpen && <span className='seeall'>See all</span>}
             </div>
