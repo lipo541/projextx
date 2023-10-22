@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getCategories } from '../../../connection/categories'
 import { useSearchParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
-import Listview from '../../listview/listview' // Import Listview component
 
 const Productlist = () => {
   const [searchParams, setSearchParams ] = useSearchParams()
@@ -37,7 +36,6 @@ const Productlist = () => {
           return<li onClick={() => handleCategory(product.id, product.name)} key={product.id}>{product.name}</li>
         })}
       </ul>
-      <Listview selectedProductId={selectedProductId} /> {/* Pass selectedProductId as prop */}
     </div>
   );
 };
