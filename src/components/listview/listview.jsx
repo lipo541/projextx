@@ -26,8 +26,12 @@ const Listview = ({ selectedProductId }) => {
       });
   }, [searchParams,params.categoryId, params.priceFrom, params.priceTo]);
 
-  // Filter products based on productId
-  const filteredProducts = products.filter(product => product.productId === selectedProductId);
+  let data = products;
+  if (params.searchKey) {
+    data = products.filter((item)=> {
+        return item.name.includes(params.searchKey)})
+  }
+
 
   return (
     <div className='nav_container'>
@@ -44,7 +48,7 @@ const Listview = ({ selectedProductId }) => {
         </div>
 
         <div className='nav_box_container'>
-        {filteredProducts.map((product) => {
+        {data.map((product) => {
             return (
                 <div className='nav_2'>
                     <Link to={`/productdetal/${product.id}`}  style={{ textDecoration: 'none' }} className='product_img1'>

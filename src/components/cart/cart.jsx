@@ -33,9 +33,6 @@ const Cart = () => {
         }
       })
     );
-    // Recalculate the total price based on the updated counts
-    const newTotalPrice = cardProducts.reduce((total, product) => total + product.price * product.count, 0);
-    setTotalPrice(newTotalPrice);
   };
 
   useEffect(() => {
@@ -64,29 +61,33 @@ const Cart = () => {
   }, [setTotalPrice]);
 
   const removeItem = (id, price, count) => {
-    // Calculate the amount to subtract from the total price
-    const amountToSubtract = price * count;
+    const confirmation = window.confirm("Are you sure you want to remove this item?");
+  
+    if (confirmation) {
+      // Calculate the amount to subtract from the total price
+      const amountToSubtract = price * count;
 
-    axios
-      .delete(`https://amazon-digital-prod.azurewebsites.net/api/cart/removefromcart`, {
-        data: {
-          productId: id,
-        },
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${JSON.parse(localStorage.getItem('myData'))}`,
-        },
-      })
-      .then((response) => {
-        setCardProducts((prevProducts) =>
-          prevProducts.filter((product) => product.id !== id)
-        );
-        // Subtract the amount from the total price
-        setTotalPrice((prevPrice) => prevPrice - amountToSubtract);
-      })
-      .catch((error) => {
-        console.error('API request error:', error);
-      });
+      axios
+        .delete(`https://amazon-digital-prod.azurewebsites.net/api/cart/removefromcart`, {
+          data: {
+            productId: id,
+          },
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${JSON.parse(localStorage.getItem('myData'))}`,
+          },
+        })
+        .then((response) => {
+          setCardProducts((prevProducts) =>
+            prevProducts.filter((product) => product.id !== id)
+          );
+          // Subtract the amount from the total price
+          setTotalPrice((prevPrice) => prevPrice - amountToSubtract);
+        })
+        .catch((error) => {
+          console.error('API request error:', error);
+        });
+    }
   };
 
   return (
@@ -130,7 +131,6 @@ const Cart = () => {
         </div>
 
         <div className='totalprise_span'>{totalPrice}</div>
-
 
         <div className="delivery_container">
           <div className="delivery_1">
