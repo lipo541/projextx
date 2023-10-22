@@ -7,6 +7,7 @@ import { CartContext } from '../../context/cartcontext'; // replace with the act
 
 const Addcart = () => {
   const [totalPrice, setTotalPrice] = useState(0);
+  
 
   return (
     <CartContext.Provider value={{ totalPrice, setTotalPrice }}>

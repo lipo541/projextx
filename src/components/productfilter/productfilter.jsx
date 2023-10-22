@@ -7,10 +7,22 @@ import star5 from '../../assets/rating/5star.png';
 import star4 from '../../assets/rating/4star.png';
 import star3 from '../../assets/rating/3star.png';
 import star2 from '../../assets/rating/2star.png';
+import { useSearchParams } from 'react-router-dom';
 
 const Productfilter = () => {
   // Make category filter
   const [products, setProducts] = useState([]);
+  const [searchParams, setSearchParams ] = useSearchParams()
+  const params = Object.fromEntries([...searchParams]);
+
+  const handleCategory = (id, category) => {
+    setSearchParams ({
+      ...params, 
+      categoryId: id,
+      categoryName: category,
+    })
+
+  }
 
   useEffect(() => {
     axios
@@ -63,7 +75,7 @@ const Productfilter = () => {
           </div>
           <ul style={{ display: isFilterOpen.category ? 'block' : 'none' }}>
             {products.map((product) => (
-              <li key={product.id}>{product.name}</li>
+              <li onClick={() => handleCategory(product.id, product.name)} key={product.id}>{product.name}</li>
             ))}
           </ul>
           {isFilterOpen.category && <span className='seeall'>See all</span>}

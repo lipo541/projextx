@@ -2,6 +2,7 @@ import React from 'react'
 import './recomended.css'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 const Recomended = () => {
   const [recomended, setRecomended] = useState([]);
@@ -27,7 +28,7 @@ const Recomended = () => {
           {recomended.map((product) => {
           return (
 
-              <div className='items_box'>
+              <Link to={`/productdetal/${product.id}`}  style={{ textDecoration: 'none' }} className='items_box'>
                   <div className='recomended_cont_img'>
                     <img src={product.images} alt="" />
                   </div>
@@ -35,7 +36,7 @@ const Recomended = () => {
                     <span className='recomended-prise'>$ {product.price}</span>
                     <span className='recomended-product-span'>{product.brand}</span>
                   </div>
-              </div>
+              </Link>
 
 
             )

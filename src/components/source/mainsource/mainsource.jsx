@@ -14,7 +14,7 @@ const Mainsource = ({products}) => {
 
       <div className="product">
         {products.map((product) => (
-          <Link to={`productdetal/${product.id}`}  style={{ textDecoration: 'none' }} className="productbox_container">
+          <Link to={`/productdetal/${product.id}`}  style={{ textDecoration: 'none' }} className="productbox_container">
             <div className="prise_container">
               <span className="description" >{product.model} </span>
               <span className="prises">from <br/> USD {product.price}</span>

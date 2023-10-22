@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import './prise.css'
+import { useSearchParams } from 'react-router-dom';
 
 function PriceRangeSlider() {
   const [minValue, setMinValue] = useState(1);
   const [maxValue, setMaxValue] = useState(2000);
+
+  const [searchParams, setSearchParams ] = useSearchParams()
+  const params = Object.fromEntries([...searchParams]);
+
 
   const handleMinChange = (event) => {
     setMinValue(Math.min(Number(event.target.value), maxValue));
@@ -14,7 +19,11 @@ function PriceRangeSlider() {
   };
 
   const handleApplyClick = () => {
-    console.log('Price range applied: Min', minValue, 'Max', maxValue);
+    setSearchParams ({
+      ...params, 
+      priceFrom:minValue,
+      priceTo:maxValue,
+    })
   };
 
   return (

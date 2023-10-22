@@ -1,6 +1,5 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
 import './listview.css'
 import grid from '../../assets/logo/grid.png';
 import circle from '../../assets/logo/circle.png';
@@ -8,31 +7,32 @@ import list from '../../assets/logo/list.png';
 import favorites from '../../assets/logo/favorite2.png';
 import arrowdown from '../../assets/logo/arrowdown.png';
 import star4 from '../../assets/rating/4star.png';
+import { useSearchParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
+const Listview = ({ selectedProductId }) => {
+  const [products, setProducts] = useState([]);
+  const [searchParams, setSearchParams ] = useSearchParams()
+  const params = Object.fromEntries([...searchParams]);
 
-import './listview.css'
+  useEffect(() => {
+    axios
+      .get(`https://amazon-digital-prod.azurewebsites.net/api/product/products?CategoryId=${params.categoryId? params.categoryId: "" }&PriceFrom=${params.priceFrom? params.priceFrom: ""}&PriceTo=${params.priceTo? params.priceTo: ""}`)
+      .then((response) => {
+        setProducts(response.data);
+      })
+      .catch((error) => {
+        console.error('API request error:', error);
+      });
+  }, [searchParams,params.categoryId, params.priceFrom, params.priceTo]);
 
-const Listview = () => {
-    const [products, setProducts] = useState([]);
+  // Filter products based on productId
+  const filteredProducts = products.filter(product => product.productId === selectedProductId);
 
-    // const [selectedProductId, setSelectedProductId] = useState(null);
-  
-    useEffect(() => {
-      axios
-        .get('https://amazon-digital-prod.azurewebsites.net/api/product/products')
-        .then((response) => {
-          setProducts(response.data ) ; // Assuming the response contains an array of products
-          
-        })
-        .catch((error) => {
-          console.error('API request error:', error);
-        });
-  
-    }, []);
   return (
     <div className='nav_container'>
         <div className='nav_1'>
-            <span>12,911 items in<b> Mobile accessory</b> </span>
+            <span>{products.length} items in<b> {params.categoryName? params.categoryName: 'store'}</b> </span>
             <div className='grid_list'>
                 <input type="checkbox" name="checkbox" id="" />
                 <span>Verified only</span>
@@ -44,15 +44,17 @@ const Listview = () => {
         </div>
 
         <div className='nav_box_container'>
-        {/* Product Cards */} 
-        {products.map((product) => {
+        {filteredProducts.map((product) => {
             return (
                 <div className='nav_2'>
-                    <div className='product_img1'>
+                    <Link to={`/productdetal/${product.id}`}  style={{ textDecoration: 'none' }} className='product_img1'>
                         <img src={product.images} alt="" />
-                    </div>
+                    </Link>
                     <div className='prise_description'>
+                    <Link to={`/productdetal/${product.id}`}  style={{ textDecoration: 'none' }}>
                         <span className='span1'>{product.model}</span>
+                    </Link>
+
                         <div className='span_box'>
                             <span className='new_prise'>$ {product.price}</span>
                             <span className='old_prise'> <del>$ {product.oldPrice}</del></span>
@@ -89,4 +91,5 @@ const Listview = () => {
     </div>
   )
 }
-export default Listview
+
+export default Listview;

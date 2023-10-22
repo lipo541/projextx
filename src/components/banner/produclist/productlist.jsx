@@ -1,42 +1,43 @@
-import React from 'react'
+// Productlist.js
 import './productlist.css'
-import axios from 'axios'
-import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { getCategories } from '../../../connection/categories'
+import { useSearchParams } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import Listview from '../../listview/listview' // Import Listview component
 
 const Productlist = () => {
-  const [offers, setOffers] = useState([]);
+  const [searchParams, setSearchParams ] = useSearchParams()
+  const params = Object.fromEntries([...searchParams]);
+  const [selectedProductId, setSelectedProductId] = useState(null); // Add this line
 
+  const dispatch = useDispatch ()
+  const navigate = useNavigate()
+
+  const {categories} = useSelector((state) => state.categories)
   useEffect(() => {
-    axios
-      .get('https://amazon-digital-prod.azurewebsites.net/api/product/categories')
-      .then((response) => {
-        setOffers(response.data);
-      })
-      .catch((error) => {
-        console.error('API request error:', error);
-      });
-      
-  }, []);
+    dispatch(getCategories())
+  }, [dispatch])
 
+  const handleCategory = (id, category) => {
+    setSearchParams ({
+      ...params, 
+      categoryId: id,
+      categoryName: category,
+    })
+    setSelectedProductId(id); // Set selected product id
+    navigate (`/filter?categoryId=${id}`)
+  }
+  
   return (
     <div className='productlist_container'>
-      <Link to={'/filter'}>
-        
-      </Link>
       <ul>
-        {offers.map((offer) => {
-          
-          return (
-            <Link to={'/filter'} style={{ textDecoration: 'none' }}> 
-              <li key={offer.id}>{offer.name}</li>
-            </Link>
-            
-          );
-          
+        {categories.map((product) => {
+          return<li onClick={() => handleCategory(product.id, product.name)} key={product.id}>{product.name}</li>
         })}
-
       </ul>
+      <Listview selectedProductId={selectedProductId} /> {/* Pass selectedProductId as prop */}
     </div>
   );
 };
