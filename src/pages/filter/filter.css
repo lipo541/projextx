@@ -7,3 +7,10 @@
     display: flex;
     gap: 10px;
 }
+
+@media (max-width:1350px) {
+  .filter_nav_page_container  {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}

@@ -1,3 +1,7 @@
+.nav_container {
+    width: 100%;
+}
+
 .nav_1 {
     display: flex;
     justify-content: space-between;

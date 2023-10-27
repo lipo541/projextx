@@ -5,7 +5,7 @@ import facebook1 from '../../assets/logo/facebook.png';
 import apple from '../../assets/logo/apple.png';
 import brandlogo from '../../assets/logo/atom.png'
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -48,12 +48,15 @@ const Login = () => {
       </div>
 
       <form onSubmit={handleSubmit}>
-        <h1>Log in <img src={brandlogo} alt="" /></h1>
-        <label htmlFor="username">Username</label>
-        <input type="text" placeholder="Email or Phone" id="username" value={username} onChange={handleInputChange} />
-
-        <label htmlFor="password">Password</label>
-        <input type="password" placeholder="Password" id="password" value={password} onChange={handleInputChange} />
+        <h1>Log in <Link to={'/'}><img src={brandlogo} alt="" /></Link> </h1>
+        <div className='label_inp_box'>
+          <label htmlFor="username">Username</label>
+          <input type="text" placeholder="Email or Phone" id="username" value={username} onChange={handleInputChange} />
+        </div>
+        <div className='label_inp_box'>
+          <label htmlFor="password">Password</label>
+          <input type="password" placeholder="Password" id="password" value={password} onChange={handleInputChange} />
+        </div>
         <div>
           <button type="submit">Log In</button>
           <div className='singn_logo_box'>
@@ -75,6 +78,8 @@ const Login = () => {
               </div>
 
             </div>
+            
+            <span className='reg_span1'><Link to={'/registration'}>register now </Link> </span>
 
           </div>
 

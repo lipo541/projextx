@@ -1,12 +1,15 @@
-.navigation_container {
-    
-}
 
+
+@media screen and (max-width: 750px) {
+    .navigation_container {
+        display: none;
+
+    }
+}
 @media screen and (max-width: 1350px) {
     .navigation_container {
         font-size: 0.85em;
-        padding-left: 10px;
-        padding-right: 10px;
+
     }
 }
 
