@@ -4,7 +4,6 @@ import './listview.css'
 import grid from '../../assets/logo/grid.png';
 import circle from '../../assets/logo/circle.png';
 import list from '../../assets/logo/list.png';
-import favorites from '../../assets/logo/favorite2.png';
 import arrowdown from '../../assets/logo/arrowdown.png';
 import star4 from '../../assets/rating/4star.png';
 import { useSearchParams } from 'react-router-dom';
@@ -79,11 +78,6 @@ const Listview = ({ selectedProductId }) => {
                             <span className='lorem'>{product.name}</span>
                             <span className='view_detail'>View details</span>
                         </div>
-                    </div>
-
-                    
-                    <div className='favorite'>
-                        <img src={favorites} alt="" />
                     </div>
                 </div>
         

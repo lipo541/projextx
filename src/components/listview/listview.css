@@ -23,65 +23,38 @@
 .nav_box_container {
     width: 100%;
     height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .nav_2 {
     display: flex;
-    row-gap: 20px;
+    justify-content: space-between;
+    gap: 5px;
     width: 100%;
     background-color: white;
     border: 1px solid #DEE2E7;
-    height: 230px;
     border-radius: 6px;
+    padding: 10px;
 }
 
 @media screen and (max-width: 950px) {
-    .nav_box_container {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        row-gap: 30px;
-    }
-    .nav_2 {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        height: auto;
-        width: 30%;
-        min-width: 190px;
-        
-    }
-    .nav_2 .prise_description .rating_box .order_info {
-        display: none;
-    }
-    
-    .nav_2 .prise_description {
-        padding: 0 0 20px 0;
-    }
-    .nav_2 .favorite {
-        display: none;
-    }
+
+
 }
 @media screen and (max-width: 800px) {
-    .nav_box_container {
-        display: flex;
-        flex-direction: column;
-        row-gap: 15px;
-    }
+
     .nav_2 .product_img1 {
         width: 20%;
-        min-width: 90px;
+        min-width: 110px;
         padding: 10px;
     }
     .nav_2 .product_img1 img{
-        width: 85px;
-        height: 85px;
+        width: 130px;
+        height: 130px;
     }
     .nav_2 {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-start;
-        align-items: flex-start;
         width: 100%;
         font-size: 0.85em;
         padding: 10px;
@@ -123,21 +96,14 @@
 }
 
 .prise_description {
-    width: 80%;
-    padding: 30px;
-}
-.favorite {
-    display: flex;
-    justify-content: flex-end;
-    width:80px ;
-    padding-top: 30px;
-    padding-right: 30px;
+    padding: 10px;
+    width: 100%;
+
+
 }
 
-.favorite img {
-    width: 40px;
-    height: 40px;
-}
+
+
 .prise_description .span1 {
     font-size: 1em;
     font-weight: 500;
@@ -160,8 +126,9 @@
 }
 .rating_box {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    column-gap: 15px;
+    gap: 5px;
     width: 100%;
 }
 .rating_star {
@@ -171,7 +138,7 @@
 }
 .order_info {
     display: flex;
-    column-gap: 15px;
+    column-gap: 5px;
     align-items: center;
 }
 .order_info img {
@@ -186,9 +153,15 @@
 }
 .free_span {
     color: #00B517;
-    font-size: 1em;
+    font-size: 0.7em;
     font-weight: 400;
 }
+@media (max-width:400px) {
+    .spans_cont {
+        font-size: 0.8em;
+    }
+}
+
 .lorem {
     font-size: 1em;
     font-weight: 400;
