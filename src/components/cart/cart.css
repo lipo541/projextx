@@ -87,6 +87,14 @@
     cursor: pointer;
 
 }
+.quantity button {
+    width: 20px;
+    background-color: var(--primary-gradient);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+}
 .cart_button_container {
     display: flex;
     flex-direction: row;
@@ -136,6 +144,7 @@
 .cart_prise :nth-child(1) {
     background-color: var(--primary-gradient);
     color: white;
+    border-radius: 6px;
     
 }
 .cart_prise :nth-child(2) {

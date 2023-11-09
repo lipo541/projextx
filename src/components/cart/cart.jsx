@@ -6,6 +6,7 @@ import leftarrow from '../../assets/logo/leftarrow.png';
 import lock from '../../assets/logo/lock.png';
 import message from '../../assets/logo/chat.png';
 import truck from '../../assets/logo/truck.png';
+import { Link } from 'react-router-dom';
 
 const Cart = () => {
   const [cardProducts, setCardProducts] = useState([]);
@@ -36,6 +37,33 @@ const Cart = () => {
     // Recalculate the total price based on the updated counts
     const newTotalPrice = cardProducts.reduce((total, product) => total + product.price * product.count, 0);
     setTotalPrice(newTotalPrice);
+  };
+
+  const removeAllItems = () => {
+    // Create an array of promises to remove each item
+    const removePromises = cardProducts.map((product) => {
+      return axios.delete(`https://digitalinstitute-amazon.azurewebsites.net/api/cart/removefromcart`, {
+        data: {
+          productId: product.id,
+        },
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${JSON.parse(localStorage.getItem('myData'))}`,
+        },
+      });
+    });
+
+    // Use Promise.all to wait for all removals to complete
+    Promise.all(removePromises)
+      .then((responses) => {
+        // All items are removed, so set cardProducts to an empty array
+        setCardProducts([]);
+        // Set the total price to 0
+        setTotalPrice(0);
+      })
+      .catch((error) => {
+        console.error('API request error:', error);
+      });
   };
 
   useEffect(() => {
@@ -124,14 +152,15 @@ const Cart = () => {
             </div>
           </div>
         ))}
-        <div className='cart_prise'>
-          <button> <img src={leftarrow} alt="" /> Back to shop</button>
-          <button>Remove all</button>
+        <div className="cart_prise">
+        <Link className="custom-link" to={"/"} style={{ textDecoration: 'none' }}>
+          <button className="link-button">
+            <img src={leftarrow} alt="" /> Back to shop
+          </button>
+        </Link>
+          <button onClick={removeAllItems}>Remove All</button>
         </div>
-
         <div className='totalprise_span'>{totalPrice}</div>
-
-
         <div className="delivery_container">
           <div className="delivery_1">
             <div className="lock_container">
