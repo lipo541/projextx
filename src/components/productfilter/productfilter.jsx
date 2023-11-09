@@ -26,7 +26,7 @@ const Productfilter = () => {
 
   useEffect(() => {
     axios
-      .get('https://amazon-digital-prod.azurewebsites.net/api/product/categories')
+      .get('https://digitalinstitute-amazon.azurewebsites.net/api/product/categories')
       .then((response) => {
         setProducts(response.data);
       })
@@ -40,7 +40,7 @@ const Productfilter = () => {
 
   useEffect(() => {
     axios
-      .get('https://amazon-digital-prod.azurewebsites.net/api/product/products')
+      .get('https://digitalinstitute-amazon.azurewebsites.net/api/product/products')
       .then((response) => {
         setBrands(response.data);
       })

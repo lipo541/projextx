@@ -16,7 +16,7 @@ const Listview = ({ selectedProductId }) => {
 
   useEffect(() => {
     axios
-      .get(`https://amazon-digital-prod.azurewebsites.net/api/product/products?CategoryId=${params.categoryId? params.categoryId: "" }&PriceFrom=${params.priceFrom? params.priceFrom: ""}&PriceTo=${params.priceTo? params.priceTo: ""}`)
+      .get(`https://digitalinstitute-amazon.azurewebsites.net/api/product/products?CategoryId=${params.categoryId? params.categoryId: "" }&PriceFrom=${params.priceFrom? params.priceFrom: ""}&PriceTo=${params.priceTo? params.priceTo: ""}`)
       .then((response) => {
         setProducts(response.data);
       })

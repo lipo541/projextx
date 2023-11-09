@@ -14,7 +14,7 @@ const Signup = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    axios.post('https://amazon-digital-prod.azurewebsites.net/api/user/registerUser',
+    axios.post('https://digitalinstitute-amazon.azurewebsites.net/api/user/registerUser',
       {
         userName,
         password,

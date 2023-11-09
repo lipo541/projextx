@@ -40,7 +40,7 @@ const Cart = () => {
 
   useEffect(() => {
     axios
-      .get('https://amazon-digital-prod.azurewebsites.net/api/cart/getmycartproducts', {
+      .get('https://digitalinstitute-amazon.azurewebsites.net/api/cart/getmycartproducts', {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${JSON.parse(localStorage.getItem('myData'))}`,
@@ -68,7 +68,7 @@ const Cart = () => {
     const amountToSubtract = price * count;
 
     axios
-      .delete(`https://amazon-digital-prod.azurewebsites.net/api/cart/removefromcart`, {
+      .delete(`https://digitalinstitute-amazon.azurewebsites.net/api/cart/removefromcart`, {
         data: {
           productId: id,
         },

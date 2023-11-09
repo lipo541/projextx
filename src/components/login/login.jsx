@@ -22,7 +22,7 @@ const Login = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.post('https://amazon-digital-prod.azurewebsites.net/api/user/LogIn',
+    axios.post('https://digitalinstitute-amazon.azurewebsites.net/api/User/LogIn',
     {
       email:username ,
       password,
