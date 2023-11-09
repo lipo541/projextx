@@ -11,11 +11,29 @@
 .right .grupe {
     display: flex;
     justify-content: space-between;
+    position: relative;
     gap: 2px;
     align-items: center;
     flex-direction: column;
     cursor: pointer;
     position: relative; 
+}
+.interval {
+    width: 13px;
+    height: 13px;
+    background-color: red;
+    border-radius: 50%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    font-size: 0.8em;
+    color: white;
+    align-items: center;
+    right: 0;
+}
+.loading {
+    color: red;
+    font-size: 2em;
 }
 
 .right .grupe:hover {
@@ -45,15 +63,15 @@
     visibility: visible; 
 }
 
-/* Responsive 950px */
 
 
-/* responsive 650px */
+
+/* responsive 750px */
 @media screen and (max-width: 720px) {
-    .right div:nth-child(2) {
+    .right .grupe2 {
         display: none;
     }
-    .right div:nth-child(3) {
+    .right .grupe2 {
         display: none;
     }
     .right {

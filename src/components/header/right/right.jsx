@@ -35,8 +35,8 @@ const Right = () => {
   useEffect(() => {
     fetchCartCount(); // Fetch initial cart count
 
-    // Periodically fetch the cart count every 0.02 seconds (adjust the interval as needed)
-    const intervalId = setInterval(fetchCartCount, 20);
+    // Periodically fetch the cart count every 0.2 seconds
+    const intervalId = setInterval(fetchCartCount, 200);
 
     // Clean up the interval when the component unmounts
     return () => clearInterval(intervalId);
@@ -70,18 +70,20 @@ const Right = () => {
           </Link>
         )}
       </div>
-      <div className='grupe'>
+      <div className='grupe grupe2'>
         <img src={message} alt="" />
         <span>Message</span>
       </div>
-      <div className='grupe'>
+      <div className='grupe grupe2'>
         <img src={order} alt="" />
         <span>Order</span>
       </div>
       <div className='grupe'>
         <img src={mycart} alt="" onClick={handleCartClick} />
-        <div>{cartCount}</div>
-        <span>My Cart</span>
+        <span>Cart</span>
+        {token && (
+          <div className='interval'>{cartCount}</div>
+        )}
       </div>
     </div>
   );
