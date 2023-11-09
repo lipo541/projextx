@@ -77,7 +77,7 @@ form {
   gap: 10px;
 }
 form * {
-  color: #ffffff;
+  color: black;
   letter-spacing: 0.5px;
   outline: none;
   border: none;
