@@ -16,7 +16,7 @@ const Right = () => {
   const fetchCartCount = () => {
     if (token) {
       axios
-        .get('https://digitalinstitute-amazon.azurewebsites.net/api/cart/getmycartproducts', {
+        .get('https://ngglobalwebapi20231210182820.azurewebsites.net/api/cart/getmycartproducts', {
           headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${JSON.parse(localStorage.getItem('myData'))}`,

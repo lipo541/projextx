@@ -13,7 +13,7 @@ const Product = ({productDetal, images}) => {
 
   const [selectedImage, setSelectedImage] = useState('');
   const handleAdd = (id) => {
-    axios.post('https://digitalinstitute-amazon.azurewebsites.net/api/cart/addincart',
+    axios.post('https://ngglobalwebapi20231210182820.azurewebsites.net/api/cart/addincart',
     {
       productId:id,
     },

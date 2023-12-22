@@ -13,7 +13,7 @@ const Productdetal = () => {
 
   useEffect(() => {
     axios
-      .get(`https://digitalinstitute-amazon.azurewebsites.net/api/product/products/${productId}`)
+      .get(`https://ngglobalwebapi20231210182820.azurewebsites.net/api/product/products/${productId}`)
       .then((response) => {
         setProductDetal(response.data);
         setImages(response.data.images);

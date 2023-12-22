@@ -10,7 +10,7 @@ const Recomended = () => {
 
   useEffect(() => {
     axios
-      .get('https://digitalinstitute-amazon.azurewebsites.net/api/product/products')
+      .get('https://ngglobalwebapi20231210182820.azurewebsites.net/api/product/products')
       .then((response) => {
         setRecomended(response.data ) ; 
         
