@@ -19,7 +19,7 @@ const Mainpage = () => {
   useEffect(() => {
     // Make the API request when the component mounts
     axios
-      .get('https://ngglobalwebapi20231210182820.azurewebsites.net/api/product/latestproducts')
+      .get('https://digitalamazon.azurewebsites.net/api/product/latestproducts')
       .then((response) => {
         setProducts(response.data ) ; 
       })
@@ -29,7 +29,7 @@ const Mainpage = () => {
 
 
     axios
-      .get('https://ngglobalwebapi20231210182820.azurewebsites.net/api/product/mostdemandproducts')
+      .get('https://digitalamazon.azurewebsites.net/api/product/mostdemandproducts')
       .then((response) => {
         setProducts2(response.data) ; 
       })

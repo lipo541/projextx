@@ -42,7 +42,7 @@ const Cart = () => {
   const removeAllItems = () => {
     // Create an array of promises to remove each item
     const removePromises = cardProducts.map((product) => {
-      return axios.delete(`https://ngglobalwebapi20231210182820.azurewebsites.net/api/cart/removefromcart`, {
+      return axios.delete(`https://digitalamazon.azurewebsites.net/api/cart/removefromcart`, {
         data: {
           productId: product.id,
         },
@@ -68,7 +68,7 @@ const Cart = () => {
 
   useEffect(() => {
     axios
-      .get('https://ngglobalwebapi20231210182820.azurewebsites.net/api/cart/getmycartproducts', {
+      .get('https://digitalamazon.azurewebsites.net/api/cart/getmycartproducts', {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${JSON.parse(localStorage.getItem('myData'))}`,
@@ -96,7 +96,7 @@ const Cart = () => {
     const amountToSubtract = price * count;
 
     axios
-      .delete(`https://ngglobalwebapi20231210182820.azurewebsites.net/api/cart/removefromcart`, {
+      .delete(`https://digitalamazon.azurewebsites.net/api/cart/removefromcart`, {
         data: {
           productId: id,
         },

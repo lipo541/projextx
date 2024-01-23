@@ -10,7 +10,7 @@ const Sale = () => {
 
   useEffect(() => {
     axios
-      .get('https://ngglobalwebapi20231210182820.azurewebsites.net/api/product/offers')
+      .get('https://digitalamazon.azurewebsites.net/api/product/offers')
       .then((response) => {
         setOffers(response.data ) ;
         

@@ -14,7 +14,7 @@ const Signup = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    axios.post('https://ngglobalwebapi20231210182820.azurewebsites.net/api/user/registerUser',
+    axios.post('https://digitalamazon.azurewebsites.net/api/user/registerUser',
       {
         userName,
         password,
